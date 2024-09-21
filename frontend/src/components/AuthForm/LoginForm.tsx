@@ -12,7 +12,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input, PasswordInput } from "@/components/ui/input";
 import { LoginDTO, LoginSchema } from "@/schemas/AuthForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -79,10 +79,9 @@ function LoginForm() {
 							<FormItem>
 								<FormLabel>Password</FormLabel>
 								<FormControl>
-									<Input
+									<PasswordInput
 										{...field}
-										placeholder='Password'
-										type='password'></Input>
+										placeholder='Password'></PasswordInput>
 								</FormControl>
 								<FormMessage></FormMessage>
 							</FormItem>

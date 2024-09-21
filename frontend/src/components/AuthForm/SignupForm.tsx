@@ -12,7 +12,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input, PasswordInput } from "@/components/ui/input";
 import { SignupDTO, SignupSchema } from "@/schemas/AuthForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -95,10 +95,9 @@ function SignupForm() {
 							<FormItem>
 								<FormLabel>Password</FormLabel>
 								<FormControl>
-									<Input
+									<PasswordInput
 										{...field}
-										placeholder='Your password'
-										type='password'></Input>
+										placeholder='Your password'></PasswordInput>
 								</FormControl>
 								<FormMessage></FormMessage>
 							</FormItem>
