@@ -13,17 +13,25 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "lucide-react";
 import Link from "next/link";
 import { _get } from "@/lib/fetch";
-import toast from "react-hot-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export const UserSetting = () => {
+	const { toast } = useToast();
 	const handleLogout = () => {
 		_get("auth/logout")
 			.then((result) => {
-				toast.success("Loged out");
+				toast({
+					title: "Success",
+					description: "You have been loged out",
+				});
 			})
 			.catch((err) => {
 				console.error(err);
-				toast.error("Something went wrong, try latter.");
+				toast({
+					title: "Failed to log out",
+					description: "Something went wrong, try latter!",
+					variant: "destructive",
+				});
 			});
 	};
 	return (
@@ -33,22 +41,30 @@ export const UserSetting = () => {
 					<Avatar>
 						<AvatarImage src='' />
 						<AvatarFallback>
-							<User className='h-10 w-10 bg-neutral-200 p-2' />
+							<User className='h-10 w-10 bg-neutral-300 p-2' />
 						</AvatarFallback>
 					</Avatar>
 				</button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				align='end'
-				className='bg-neutral-50'>
+				className='border-neutral-50 bg-neutral-200'>
 				<DropdownMenuLabel>Setting</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
 					<DropdownMenuItem>
-						<Link href='/login'>Login</Link>
+						<Link
+							className='h-full w-full'
+							href='/login'>
+							Login
+						</Link>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
-						<Link href='/signup'>Sign up</Link>
+						<Link
+							className='h-full w-full'
+							href='/signup'>
+							Sign up
+						</Link>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
 						<button onClick={() => handleLogout()}>Log out</button>
