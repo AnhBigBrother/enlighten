@@ -1,13 +1,13 @@
 "use client";
 
 import { IconButton } from "@/components/Header/IconButton";
-import { SideMenu } from "@/components/Header/HeaderLeft/SideMenu";
+import { SideMenu } from "@/components/Header/Left/SideMenu";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { Menu } from "lucide-react";
 
-export const HeaderLeft = () => {
+export const Left = () => {
 	const sideMenu = useRef<HTMLDivElement | null>(null);
 	const toggleSideMenu = (e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (sideMenu.current) {
@@ -26,7 +26,7 @@ export const HeaderLeft = () => {
 		<>
 			<div
 				ref={sideMenu}
-				className='fixed left-0 top-16 hidden h-[calc(100vh-4rem)] w-full backdrop-blur-sm md:block md:w-fit xl:left-[20vw]'
+				className='fixed left-0 top-16 hidden h-[calc(100vh-4rem)] w-full backdrop-blur-sm md:block md:w-fit md:py-5 md:pl-3 xl:left-[20vw] xl:pl-0'
 				onClick={(e) => toggleSideMenu(e)}>
 				<SideMenu />
 			</div>
@@ -44,7 +44,7 @@ export const HeaderLeft = () => {
 						alt='Enlighten'
 						height={192}
 						width={192}
-						className='h-10 w-10 rounded-xl border'
+						className='h-10 w-10 rounded-md border'
 					/>
 					<h1 className='hidden h-7 text-2xl font-bold text-black sm:inline-block'>
 						Enlighten
