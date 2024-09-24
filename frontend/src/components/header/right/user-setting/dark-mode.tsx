@@ -18,7 +18,7 @@ import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 
-export function DarkMode() {
+export const DarkMode = React.forwardRef(() => {
 	const { setTheme, theme } = useTheme();
 
 	return (
@@ -113,4 +113,4 @@ export function DarkMode() {
 			</DialogContent>
 		</Dialog>
 	);
-}
+});

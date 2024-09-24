@@ -4,7 +4,7 @@
 
 import { COOKIE_AGE } from "@/constants";
 import { _post } from "@/lib/fetch";
-import { LoginDTO, LoginSchema, SignupDTO, SignupSchema } from "@/schemas/AuthForm";
+import { LoginDTO, LoginSchema, SignupDTO, SignupSchema } from "@/schemas/auth-schema";
 import { cookies } from "next/headers";
 import { fromZodError } from "zod-validation-error";
 

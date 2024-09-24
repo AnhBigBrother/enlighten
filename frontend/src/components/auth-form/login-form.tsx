@@ -13,7 +13,9 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input, PasswordInput } from "@/components/ui/input";
-import { LoginDTO, LoginSchema } from "@/schemas/AuthForm";
+import { _get } from "@/lib/fetch";
+import { LoginDTO, LoginSchema } from "@/schemas/auth-schema";
+import useUserStore from "@/stores/user-store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -31,6 +33,7 @@ function LoginForm() {
 			password: "",
 		},
 	});
+	const updateUser = useUserStore.use.update();
 	const onSubmit = async (data: LoginDTO) => {
 		setIsPending(true);
 		setError("");
@@ -40,11 +43,23 @@ function LoginForm() {
 			setError(result.message);
 			return;
 		}
-		localStorage.setItem("access_token", result.access_token);
+		const access_token = result.access_token;
+		localStorage.setItem("access_token", access_token);
 		setError("");
 		setSuccess("Success!");
-		router.push("/");
-		setIsPending(false);
+		_get("user/session", { authorization: access_token || "" })
+			.then((session) => {
+				const user = session.user;
+				delete user.typ;
+				updateUser(user);
+			})
+			.catch((err) => {
+				console.error(err);
+			})
+			.finally(() => {
+				router.push("/");
+				setIsPending(false);
+			});
 	};
 
 	return (

@@ -1,4 +1,4 @@
-import LoginForm from "@/components/AuthForm/LoginForm";
+import LoginForm from "@/components/auth-form/login-form";
 import { Metadata } from "next";
 import React from "react";
 

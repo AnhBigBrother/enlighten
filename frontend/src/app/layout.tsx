@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { UserContextProvider } from "@/contexts/userContext";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
+import { FirstLoad } from "@/components/first-load";
 
 const merriweather = localFont({
 	src: "./merriweather.ttf",
@@ -37,15 +38,15 @@ export default function Layout({
 	return (
 		<html lang='en'>
 			<body className={cn(merriweather.className, "text-app bg-app-foreground")}>
-				<UserContextProvider>
-					<ThemeProvider
-						attribute='class'
-						defaultTheme='system'
-						enableSystem
-						disableTransitionOnChange>
-						{children}
-					</ThemeProvider>
-				</UserContextProvider>
+				<FirstLoad />
+				<Toaster />
+				<ThemeProvider
+					attribute='class'
+					defaultTheme='system'
+					enableSystem
+					disableTransitionOnChange>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
