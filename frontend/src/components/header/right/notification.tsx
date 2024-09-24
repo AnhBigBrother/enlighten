@@ -1,6 +1,6 @@
 "use client";
 
-import { IconButton } from "@/components/Header/IconButton";
+import { IconButton } from "@/components/header/icon-button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -13,7 +13,6 @@ import {
 import { Bell } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { IoNotificationsOutline } from "react-icons/io5";
 
 export const Notification = () => {
 	const router = useRouter();

@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
+import { cn } from "@/lib/utils";
 
 export function DarkMode() {
 	const { setTheme, theme } = useTheme();
@@ -38,12 +39,15 @@ export function DarkMode() {
 					</DialogDescription>
 				</DialogHeader>
 				<div className='flex flex-row items-center space-x-4'>
-					<div className='flex flex-col space-y-2'>
+					<div
+						onClick={() => setTheme("light")}
+						className={cn("flex cursor-pointer flex-col space-y-2 rounded-md p-2", {
+							"bg-app-foreground": theme === "light",
+						})}>
 						<div className='flex items-center space-x-2'>
 							<Checkbox
 								id='light-mode'
 								checked={theme === "light"}
-								onClick={() => setTheme("light")}
 							/>
 							<label htmlFor='light-mode'>Light</label>
 						</div>
@@ -54,12 +58,15 @@ export function DarkMode() {
 							width={160}
 							className='rounded-sm'></Image>
 					</div>
-					<div className='flex flex-col space-y-2'>
+					<div
+						onClick={() => setTheme("dark")}
+						className={cn("flex cursor-pointer flex-col space-y-2 rounded-md p-2", {
+							"bg-app-foreground": theme === "dark",
+						})}>
 						<div className='flex items-center space-x-2'>
 							<Checkbox
 								id='dark-mode'
 								checked={theme === "dark"}
-								onClick={() => setTheme("dark")}
 							/>
 							<label htmlFor='dark-mode'>Dark</label>
 						</div>
@@ -70,12 +77,15 @@ export function DarkMode() {
 							width={160}
 							className='rounded-sm'></Image>
 					</div>
-					<div className='flex flex-col space-y-2'>
+					<div
+						onClick={() => setTheme("system")}
+						className={cn("flex cursor-pointer flex-col space-y-2 rounded-md p-2", {
+							"bg-app-foreground": theme === "system",
+						})}>
 						<div className='flex items-center space-x-2'>
 							<Checkbox
 								id='system-mode'
 								checked={theme === "system"}
-								onClick={() => setTheme("system")}
 							/>
 							<label htmlFor='system-mode'>System</label>
 						</div>

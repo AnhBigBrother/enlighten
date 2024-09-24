@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
-import { IconButton } from "@/components/Header/IconButton";
+import { IconButton } from "@/components/header/icon-button";
 import { FaXmark } from "react-icons/fa6";
 
 export const Search = () => {

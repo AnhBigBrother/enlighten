@@ -1,7 +1,7 @@
 "use client";
 
-import { IconButton } from "@/components/Header/IconButton";
-import { SideMenu } from "@/components/Header/Left/SideMenu";
+import { IconButton } from "@/components/header/icon-button";
+import { SideMenu } from "@/components/header/left/side-menu";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";

@@ -1,4 +1,4 @@
-import PageHeader from "@/components/Header";
+import PageHeader from "@/components/header";
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 

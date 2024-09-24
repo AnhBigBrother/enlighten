@@ -14,7 +14,7 @@ import { User } from "lucide-react";
 import Link from "next/link";
 import { _get } from "@/lib/fetch";
 import { useToast } from "@/hooks/use-toast";
-import { DarkMode } from "@/components/Header/Right/UserSetting/DarkMode";
+import { DarkMode } from "@/components/header/right/user-setting/dark-mode";
 
 export const UserSetting = () => {
 	const { toast } = useToast();

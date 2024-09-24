@@ -1,7 +1,7 @@
 import React from "react";
-import { Search } from "@/components/Header/Search";
-import { Left } from "@/components/Header/Left";
-import { Right } from "@/components/Header/Right";
+import { Search } from "@/components/header/search";
+import { Left } from "@/components/header/left";
+import { Right } from "@/components/header/right";
 
 const PageHeader = () => {
 	return (
