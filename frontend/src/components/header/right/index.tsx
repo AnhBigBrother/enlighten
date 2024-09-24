@@ -1,6 +1,6 @@
-import { IconButton } from "@/components/Header/IconButton";
-import { Notification } from "@/components/Header/Right/Notification";
-import { UserSetting } from "@/components/Header/Right/UserSetting";
+import { IconButton } from "@/components/header/icon-button";
+import { Notification } from "@/components/header/right/notification";
+import { UserSetting } from "@/components/header/right/user-setting";
 import { NotebookPen } from "lucide-react";
 import React from "react";
 
