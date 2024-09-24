@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { UserContextProvider } from "@/contexts/userContext";
+import { ThemeProvider } from "@/contexts/theme-provider";
+import { cn } from "@/lib/utils";
 
 const merriweather = localFont({
 	src: "./merriweather.ttf",
@@ -14,13 +17,13 @@ export const metadata: Metadata = {
 		icon: [
 			{
 				media: "(prefers-color-scheme: light)",
-				url: "/images/icon-light.png",
-				href: "/images/icon-light.png",
+				url: "/icons/light.png",
+				href: "/icons/light.png",
 			},
 			{
 				media: "(prefers-color-scheme: dark)",
-				url: "/images/icon-dark.png",
-				href: "/images/icon-dark.png",
+				url: "/icons/dark.png",
+				href: "/icons/dark.png",
 			},
 		],
 	},
@@ -33,7 +36,17 @@ export default function Layout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={merriweather.className}>{children}</body>
+			<body className={cn(merriweather.className, "text-app bg-app-foreground")}>
+				<UserContextProvider>
+					<ThemeProvider
+						attribute='class'
+						defaultTheme='system'
+						enableSystem
+						disableTransitionOnChange>
+						{children}
+					</ThemeProvider>
+				</UserContextProvider>
+			</body>
 		</html>
 	);
 }

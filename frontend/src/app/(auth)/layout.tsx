@@ -19,6 +19,8 @@ export default async function AuthLayout({
 	if (session?.user) redirect("/");
 
 	return (
-		<div className='grid h-screen w-screen place-content-center bg-neutral-300'>{children}</div>
+		<div className='bg-app-foreground grid h-screen w-screen place-content-center '>
+			{children}
+		</div>
 	);
 }

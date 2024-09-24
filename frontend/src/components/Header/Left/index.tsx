@@ -40,15 +40,20 @@ export const Left = () => {
 					href={"/"}
 					className='flex flex-shrink-0 flex-row items-center gap-2'>
 					<Image
-						src={"/images/icon-dark.png"}
+						src={"/icons/light.png"}
 						alt='Enlighten'
 						height={192}
 						width={192}
-						className='h-10 w-10 rounded-md border'
+						className='h-8 w-8 rounded-md dark:hidden'
 					/>
-					<h1 className='hidden h-7 text-2xl font-bold text-black sm:inline-block'>
-						Enlighten
-					</h1>
+					<Image
+						src={"/icons/dark.png"}
+						alt='Enlighten'
+						height={192}
+						width={192}
+						className='hidden h-8 w-8 rounded-md dark:block'
+					/>
+					<h1 className='hidden text-2xl font-bold sm:inline-block'>Enlighten</h1>
 				</Link>
 			</span>
 		</>

@@ -25,7 +25,7 @@ export const Notification = () => {
 					<Bell />
 				</IconButton>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className='border-neutral-50 bg-neutral-200'>
+			<DropdownMenuContent className='border-app bg-app'>
 				<DropdownMenuLabel>Notifications</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>

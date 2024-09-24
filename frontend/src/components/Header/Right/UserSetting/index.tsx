@@ -14,6 +14,7 @@ import { User } from "lucide-react";
 import Link from "next/link";
 import { _get } from "@/lib/fetch";
 import { useToast } from "@/hooks/use-toast";
+import { DarkMode } from "@/components/Header/Right/UserSetting/DarkMode";
 
 export const UserSetting = () => {
 	const { toast } = useToast();
@@ -41,17 +42,20 @@ export const UserSetting = () => {
 					<Avatar>
 						<AvatarImage src='' />
 						<AvatarFallback>
-							<User className='h-10 w-10 bg-neutral-300 p-2' />
+							<User className='bg-app-foreground h-10 w-10  p-2' />
 						</AvatarFallback>
 					</Avatar>
 				</button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				align='end'
-				className='border-neutral-50 bg-neutral-200'>
+				className='border-app bg-app'>
 				<DropdownMenuLabel>Setting</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
+					<DropdownMenuItem asChild>
+						<DarkMode />
+					</DropdownMenuItem>
 					<DropdownMenuItem>
 						<Link
 							className='h-full w-full'
@@ -67,7 +71,11 @@ export const UserSetting = () => {
 						</Link>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
-						<button onClick={() => handleLogout()}>Log out</button>
+						<button
+							className='h-full w-full text-start'
+							onClick={() => handleLogout()}>
+							Log out
+						</button>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
 			</DropdownMenuContent>
