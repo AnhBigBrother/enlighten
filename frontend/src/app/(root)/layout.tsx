@@ -1,4 +1,4 @@
-import PageHeader from "@/components/header";
+import PageHeader from "@/components/_layout/header";
 import React from "react";
 
 function RootLayout({

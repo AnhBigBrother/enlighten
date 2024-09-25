@@ -21,5 +21,5 @@ export const FirstLoad = () => {
 			});
 	}, []);
 
-	return;
+	return null;
 };

@@ -21,11 +21,9 @@ export class SessionDto {
 	email: string;
 	@IsNotEmpty()
 	@IsString()
-	@IsEmail()
 	name: string;
 	@IsNotEmpty()
 	@IsString()
-	@IsEmail()
 	image: string;
 }
 

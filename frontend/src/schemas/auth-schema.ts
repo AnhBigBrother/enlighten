@@ -11,9 +11,14 @@ const SignupSchema = z.object({
 	password: z.string().min(6, {
 		message: "Password must be 6 characters or longer",
 	}),
-	name: z.string().min(3, {
-		message: "Name must be 3 characters or longer",
-	}),
+	name: z
+		.string()
+		.min(3, {
+			message: "Name must be 3 characters or longer",
+		})
+		.max(30, {
+			message: "Name must be less than 30 characters",
+		}),
 });
 type LoginDTO = z.infer<typeof LoginSchema>;
 type SignupDTO = z.infer<typeof SignupSchema>;

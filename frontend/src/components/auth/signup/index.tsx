@@ -1,8 +1,8 @@
 "use client";
 
-import { Login } from "@/actions/auth";
-import { FormError, FormSuccess } from "@/components/auth-form/form-notification";
-import { FormWrapper } from "@/components/auth-form/form-wrapper";
+import { Signup } from "@/actions/auth";
+import { FormError, FormSuccess } from "@/components/auth/_shared/form-notification";
+import { FormWrapper } from "@/components/auth/_shared/form-wrapper";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -14,33 +14,35 @@ import {
 } from "@/components/ui/form";
 import { Input, PasswordInput } from "@/components/ui/input";
 import { _get } from "@/lib/fetch";
-import { LoginDTO, LoginSchema } from "@/schemas/auth-schema";
+import { SignupDTO, SignupSchema } from "@/schemas/auth-schema";
 import useUserStore from "@/stores/user-store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function LoginForm() {
+function SignupForm() {
 	const router = useRouter();
 	const [isPending, setIsPending] = useState<boolean>(false);
 	const [success, setSuccess] = useState<string>("");
 	const [error, setError] = useState<string>("");
-	const form = useForm<LoginDTO>({
-		resolver: zodResolver(LoginSchema),
+	const form = useForm<SignupDTO>({
+		resolver: zodResolver(SignupSchema),
 		defaultValues: {
 			email: "",
+			name: "",
 			password: "",
 		},
 	});
 	const updateUser = useUserStore.use.update();
-	const onSubmit = async (data: LoginDTO) => {
+	const onSubmit = async (data: SignupDTO) => {
 		setIsPending(true);
 		setError("");
-		const result = await Login(data);
+		const result = await Signup(data);
 		if (result.error) {
 			setSuccess("");
 			setError(result.message);
+			setIsPending(false);
 			return;
 		}
 		const access_token = result.access_token;
@@ -64,10 +66,10 @@ function LoginForm() {
 
 	return (
 		<FormWrapper
-			headerLabel='Login'
-			showOAuth={true}
-			footerLinkLabel="Don't have an account? Signup here!"
-			footerLinkHref='/signup'>
+			headerLabel='Signup'
+			showOAuth={false}
+			footerLinkLabel='Already have account? Login here!'
+			footerLinkHref='/login'>
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
@@ -81,8 +83,23 @@ function LoginForm() {
 								<FormControl>
 									<Input
 										{...field}
-										placeholder='Email'
+										placeholder='Your email'
 										type='email'></Input>
+								</FormControl>
+								<FormMessage></FormMessage>
+							</FormItem>
+						)}></FormField>
+					<FormField
+						control={form.control}
+						name='name'
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Name</FormLabel>
+								<FormControl>
+									<Input
+										{...field}
+										placeholder='Your name'
+										type='text'></Input>
 								</FormControl>
 								<FormMessage></FormMessage>
 							</FormItem>
@@ -96,7 +113,7 @@ function LoginForm() {
 								<FormControl>
 									<PasswordInput
 										{...field}
-										placeholder='Password'></PasswordInput>
+										placeholder='Your password'></PasswordInput>
 								</FormControl>
 								<FormMessage></FormMessage>
 							</FormItem>
@@ -106,7 +123,7 @@ function LoginForm() {
 					<Button
 						type='submit'
 						disabled={isPending}>
-						Login
+						Signup
 					</Button>
 				</form>
 			</Form>
@@ -114,4 +131,4 @@ function LoginForm() {
 	);
 }
 
-export default LoginForm;
+export default SignupForm;

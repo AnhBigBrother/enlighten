@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
-import { FirstLoad } from "@/components/first-load";
+import { FirstLoad } from "@/components/_layout/first-load";
 
 const merriweather = localFont({
 	src: "./merriweather.ttf",
@@ -38,13 +38,13 @@ export default function Layout({
 	return (
 		<html lang='en'>
 			<body className={cn(merriweather.className, "text-app bg-app-foreground")}>
-				<FirstLoad />
-				<Toaster />
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='system'
 					enableSystem
 					disableTransitionOnChange>
+					<FirstLoad />
+					<Toaster />
 					{children}
 				</ThemeProvider>
 			</body>
