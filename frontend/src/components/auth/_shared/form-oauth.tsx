@@ -3,10 +3,36 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 export function FormOAuth() {
-	const handleSignInGoogle = async () => {};
-	const handleSignInGitHub = async () => {};
+	const { toast } = useToast();
+	const handleSignInGoogle = async () => {
+		try {
+			const { url } = await fetch("/api/oauth/google").then((res) => res.json());
+			window.location.href = url;
+		} catch (error) {
+			toast({
+				title: "Failed to login",
+				description: "Something went wrong, try later!",
+				variant: "destructive",
+			});
+			console.error(error);
+		}
+	};
+	const handleSignInGitHub = async () => {
+		try {
+			const { url } = await fetch("/api/oauth/github").then((res) => res.json());
+			window.location.href = url;
+		} catch (error) {
+			toast({
+				title: "Failed to login",
+				description: "Something went wrong, try later!",
+				variant: "destructive",
+			});
+			console.error(error);
+		}
+	};
 	return (
 		<div className='flex w-full flex-col items-center justify-center gap-2'>
 			<p className='flex w-full items-center justify-between text-gray-300'>

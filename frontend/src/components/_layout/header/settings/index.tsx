@@ -81,16 +81,15 @@ export const Setting = () => {
 					</DropdownMenuContent>
 				</DropdownMenu>
 			</div>
+
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<button>
-						<Avatar>
-							<AvatarImage src={user?.image} />
-							<AvatarFallback>
-								<User className='bg-app-foreground h-10 w-10 p-2' />
-							</AvatarFallback>
-						</Avatar>
-					</button>
+					<Avatar>
+						<AvatarImage src={user?.image} />
+						<AvatarFallback>
+							<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
+						</AvatarFallback>
+					</Avatar>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent
 					align='end'
@@ -98,11 +97,11 @@ export const Setting = () => {
 					<DropdownMenuGroup>
 						{user ? (
 							<DropdownMenuItem>
-								<button className='flex h-full w-full flex-col items-start justify-start gap-3 py-3 hover:brightness-90'>
+								<button className='flex h-full w-full flex-col items-start justify-start gap-3 py-2 hover:brightness-90'>
 									<Avatar>
 										<AvatarImage src={user?.image} />
 										<AvatarFallback>
-											<User className='bg-app-foreground h-10 w-10 p-2' />
+											<User className='bg-app-foreground h-full w-full rounded-full p-2' />
 										</AvatarFallback>
 									</Avatar>
 									<p>{user?.name}</p>
