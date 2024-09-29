@@ -1,6 +1,6 @@
-import { FormFooter } from "@/components/auth-form/form-footer";
-import { FormHeader } from "@/components/auth-form/form-header";
-import { FormOAuth } from "@/components/auth-form/form-oauth";
+import { FormFooter } from "@/components/auth/_shared/form-footer";
+import { FormHeader } from "@/components/auth/_shared/form-header";
+import { FormOAuth } from "@/components/auth/_shared/form-oauth";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import React from "react";
 

@@ -4,7 +4,7 @@ import { create } from "zustand";
 export type TUser = {
 	email: string;
 	name: string;
-	id?: number | string;
+	id: number | string;
 	image?: string;
 	exp?: number;
 	iat?: number;

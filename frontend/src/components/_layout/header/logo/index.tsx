@@ -1,13 +1,13 @@
 "use client";
 
-import { IconButton } from "@/components/header/icon-button";
-import { SideMenu } from "@/components/header/left/side-menu";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
-import { Menu } from "lucide-react";
+import { House, Menu, Telescope, TrendingUp } from "lucide-react";
+import { IconButton } from "@/components/ui/icon-button";
+import { MenuGroup, MenuItem, MenuList, MenuSeperator } from "@/components/ui/menu";
 
-export const Left = () => {
+export const Logo = () => {
 	const sideMenu = useRef<HTMLDivElement | null>(null);
 	const toggleSideMenu = (e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (sideMenu.current) {
@@ -28,7 +28,31 @@ export const Left = () => {
 				ref={sideMenu}
 				className='fixed left-0 top-16 hidden h-[calc(100vh-4rem)] w-full backdrop-blur-sm md:block md:w-fit md:py-5 md:pl-3 xl:left-[20vw] xl:pl-0'
 				onClick={(e) => toggleSideMenu(e)}>
-				<SideMenu />
+				<aside className='fluent-scrollbar border-app bg-app-foreground flex h-full w-64 flex-col items-start justify-start overflow-x-hidden overflow-y-hidden border-r px-3 py-1 hover:overflow-y-auto'>
+					<MenuList>
+						<MenuGroup>
+							<MenuItem>
+								<div className='flex w-full flex-row space-x-5'>
+									<House />
+									<p>Home</p>
+								</div>
+							</MenuItem>
+							<MenuItem>
+								<div className='flex w-full flex-row space-x-5'>
+									<TrendingUp />
+									<p>Popular</p>
+								</div>
+							</MenuItem>
+							<MenuItem>
+								<div className='flex w-full flex-row space-x-5'>
+									<Telescope />
+									<p>Explore</p>
+								</div>
+							</MenuItem>
+						</MenuGroup>
+						<MenuSeperator />
+					</MenuList>
+				</aside>
 			</div>
 			<span className='flex flex-row items-center justify-start gap-1'>
 				<IconButton

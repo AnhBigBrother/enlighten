@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
-import { IconButton } from "@/components/header/icon-button";
 import { FaXmark } from "react-icons/fa6";
+import { IconButton } from "@/components/ui/icon-button";
 
 export const Search = () => {
 	const [search, setSearch] = useState<string>("");

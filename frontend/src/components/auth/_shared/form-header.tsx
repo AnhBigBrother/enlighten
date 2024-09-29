@@ -6,8 +6,14 @@ function FormHeader({ label }: { label: string }) {
 		<div className='flex flex-col items-center justify-center gap-1'>
 			<div className='flex items-center gap-2'>
 				<Image
-					className=''
+					className='hidden dark:block'
 					src='/icons/dark.png'
+					alt='messenger'
+					width={36}
+					height={36}></Image>
+				<Image
+					className='dark:hidden'
+					src='/icons/light.png'
 					alt='messenger'
 					width={36}
 					height={36}></Image>
