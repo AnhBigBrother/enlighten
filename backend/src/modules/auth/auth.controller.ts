@@ -15,11 +15,13 @@ import { AuthGuard } from 'src/guards/auth/auth.guard';
 import { AuthService } from 'src/modules/auth/auth.service';
 import { LoginDto, SignupDto } from 'src/modules/auth/dto';
 import { TokenService } from 'src/modules/_global/token/token.service';
+import { OauthService } from 'src/modules/auth/oauth.service';
 
 @Controller('auth')
 export class AuthController {
 	constructor(
 		private authService: AuthService,
+		private oauthService: OauthService,
 		private tokenService: TokenService,
 	) {}
 
@@ -64,11 +66,11 @@ export class AuthController {
 		@Query('access_token') google_access_token: string,
 	) {
 		try {
-			const { email, name, picture } = await this.authService.getGoogleUserData(
+			const { email, name, picture } = await this.oauthService.getGoogleUserInfo(
 				token_type,
 				google_access_token,
 			);
-			const user = await this.authService.oauthLogin(email, name, picture);
+			const user = await this.oauthService.getOrCreateUser(email, name, picture);
 			const { access_token, refresh_token } = await this.tokenService.create2Tokens(
 				user.email,
 				user.id,
@@ -87,11 +89,34 @@ export class AuthController {
 		@Query('access_token') github_access_token: string,
 	) {
 		try {
-			const { email, name, avatar_url } = await this.authService.getGithubUserData(
+			const { email, name, avatar_url } = await this.oauthService.getGithubUserInfo(
 				token_type,
 				github_access_token,
 			);
-			const user = await this.authService.oauthLogin(email, name, avatar_url);
+			const user = await this.oauthService.getOrCreateUser(email, name, avatar_url);
+			const { access_token, refresh_token } = await this.tokenService.create2Tokens(
+				user.email,
+				user.id,
+			);
+			return { access_token, refresh_token };
+		} catch (error) {
+			console.error(error);
+			throw new BadRequestException();
+		}
+	}
+
+	@Post('microsoft')
+	@HttpCode(200)
+	async authMicrosoft(
+		@Query('token_type') token_type: string,
+		@Query('access_token') microsoft_access_token: string,
+	) {
+		try {
+			const { email, name, picture } = await this.oauthService.getMicrosoftUserInfo(
+				token_type,
+				microsoft_access_token,
+			);
+			const user = await this.oauthService.getOrCreateUser(email, name, picture);
 			const { access_token, refresh_token } = await this.tokenService.create2Tokens(
 				user.email,
 				user.id,

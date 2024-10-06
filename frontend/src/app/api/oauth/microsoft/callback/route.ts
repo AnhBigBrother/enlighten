@@ -1,10 +1,10 @@
 import {
 	COOKIE_AGE,
 	FRONTEND_URL,
-	GOOGLE_REDIRECT_URI,
-	GOOGLE_CLIENT_ID,
-	GOOGLE_CLIENT_SECRET,
-	GOOGLE_GET_TOKEN_URL,
+	MICROSOFT_CLIENT_ID,
+	MICROSOFT_CLIENT_SECRET,
+	MICROSOFT_GET_TOKEN_URL,
+	MICROSOFT_REDIRECT_URI,
 } from "@/constants";
 import { _post } from "@/lib/fetch";
 import { cookies } from "next/headers";
@@ -14,23 +14,24 @@ export async function GET(req: NextRequest) {
 	try {
 		/*<---get google's access_token--->*/
 		const code = req.nextUrl.searchParams.get("code")!;
-		const url = new URL(GOOGLE_GET_TOKEN_URL);
-		url.searchParams.set("code", code);
-		url.searchParams.set("client_id", GOOGLE_CLIENT_ID);
-		url.searchParams.set("client_secret", GOOGLE_CLIENT_SECRET);
-		url.searchParams.set("redirect_uri", GOOGLE_REDIRECT_URI);
+		const url = new URL(MICROSOFT_GET_TOKEN_URL);
 		url.searchParams.set("grant_type", "authorization_code");
+		url.searchParams.set("client_id", MICROSOFT_CLIENT_ID);
+		url.searchParams.set("client_secret", MICROSOFT_CLIENT_SECRET);
+		url.searchParams.set("redirect_uri", MICROSOFT_REDIRECT_URI);
+		url.searchParams.set("code", code);
 		const token = await fetch(url, {
 			method: "POST",
 			headers: {
-				"content-type": "application/x-www-form-urlencoded",
-				Accept: "application/json",
+				"Content-Type": "application/x-www-form-urlencoded",
 			},
 			body: url.searchParams.toString(),
 		}).then((res) => res.json());
 
+		console.log(token);
+
 		/*<---login to backend via google access_token--->*/
-		const { access_token, refresh_token } = await _post("auth/google", {
+		const { access_token, refresh_token } = await _post("auth/microsoft", {
 			searchParams: { token_type: token.token_type, access_token: token.access_token },
 		});
 

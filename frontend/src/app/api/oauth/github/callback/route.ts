@@ -1,7 +1,7 @@
 import {
 	COOKIE_AGE,
 	FRONTEND_URL,
-	GITHUB_CALLBACK_URL,
+	GITHUB_REDIRECT_URI,
 	GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET,
 	GITHUB_GET_TOKEN_URL,
@@ -18,13 +18,14 @@ export async function GET(req: NextRequest) {
 		url.searchParams.set("code", code);
 		url.searchParams.set("client_id", GITHUB_CLIENT_ID);
 		url.searchParams.set("client_secret", GITHUB_CLIENT_SECRET);
-		url.searchParams.set("redirect_uri", GITHUB_CALLBACK_URL);
+		url.searchParams.set("redirect_uri", GITHUB_REDIRECT_URI);
 		const token = await fetch(url, {
 			method: "POST",
 			headers: {
-				"content-type": "application/json",
+				"content-type": "application/x-www-form-urlencoded",
 				Accept: "application/json",
 			},
+			body: url.searchParams.toString(),
 		}).then((res) => res.json());
 
 		/*<---login to backend via github access_token--->*/
