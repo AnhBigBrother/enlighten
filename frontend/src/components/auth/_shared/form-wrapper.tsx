@@ -20,7 +20,7 @@ function FormWrapper({
 	showOAuth,
 }: FormWrapperProps) {
 	return (
-		<Card className='w-fit shadow-lg sm:w-[24rem]'>
+		<Card className='w-fit shadow-lg sm:w-[23rem]'>
 			<CardHeader>
 				<FormHeader label={headerLabel}></FormHeader>
 			</CardHeader>

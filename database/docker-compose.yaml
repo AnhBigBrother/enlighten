@@ -1,13 +1,13 @@
-version: '3'
+version: "3"
 services:
   database:
     image: postgres
-    container_name: blog-database
+    container_name: enlighten-database
     ports:
       - 5432:5432
     environment:
       POSTGRES_USER: bruhh
       POSTGRES_PASSWORD: 123
-      POSTGRES_DB: nest_playground
+      POSTGRES_DB: enlighten
     volumes:
       - ./database/postgres:/var/lib/postgresql/data
