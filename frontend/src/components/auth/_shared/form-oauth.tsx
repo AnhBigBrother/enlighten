@@ -47,6 +47,20 @@ export function FormOAuth() {
 			console.error(error);
 		}
 	};
+	const handleSignInDiscord = async () => {
+		try {
+			const { url } = await fetch("/api/oauth/discord").then((res) => res.json());
+			window.location.href = url;
+		} catch (error) {
+			toast({
+				title: "Failed to login",
+				description: "Something went wrong, try later!",
+				variant: "destructive",
+			});
+			console.error(error);
+		}
+	};
+
 	return (
 		<div className='flex w-full flex-col items-center justify-center gap-2'>
 			<div className='flex w-full items-center justify-between px-1 text-gray-300'>
@@ -85,7 +99,7 @@ export function FormOAuth() {
 				</div>
 			</Button>
 			<Button
-				onClick={() => {}}
+				onClick={handleSignInDiscord}
 				size={"lg"}
 				className='w-full'
 				variant={"outline"}>

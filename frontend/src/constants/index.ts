@@ -27,3 +27,10 @@ export const MICROSOFT_GET_USER_INFO_URL = "https://graph.microsoft.com/oidc/use
 export const MICROSOFT_REDIRECT_URI = process.env.NEXT_PUBLIC_MICROSOFT_REDIRECT_URI!;
 export const MICROSOFT_CLIENT_ID = process.env.NEXT_PUBLIC_MICROSOFT_CLIENT_ID!;
 export const MICROSOFT_CLIENT_SECRET = process.env.NEXT_PUBLIC_MICROSOFT_CLIENT_SECRET!;
+
+export const DISCORD_GET_CONSENT_URL = "https://discord.com/oauth2/authorize";
+export const DISCORD_GET_TOKEN_URL = "https://discord.com/api/v10/oauth2/token";
+export const DISCORD_GET_USER_INFO_URL = "https://discord.com/api/v10/oauth2/@me";
+export const DISCORD_REDIRECT_URI = process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI!;
+export const DISCORD_CLIENT_ID = process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID!;
+export const DISCORD_CLIENT_SECRET = process.env.NEXT_PUBLIC_DISCORD_CLIENT_SECRET!;

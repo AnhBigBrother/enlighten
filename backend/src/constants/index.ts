@@ -12,3 +12,4 @@ export const DATABASE_URL = process.env.DATABASE_URL;
 export const GITHUB_GET_USER_DATA_URL = 'https://api.github.com/user';
 export const GOOGLE_GET_USER_DATA_URL = 'https://www.googleapis.com/oauth2/v3/userinfo';
 export const MICROSOFT_GET_USER_INFO_URL = 'https://graph.microsoft.com/oidc/userinfo';
+export const DISCORD_GET_USER_INFO_URL = 'https://discord.com/api/v10/users/@me';

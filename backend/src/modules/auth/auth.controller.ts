@@ -89,11 +89,11 @@ export class AuthController {
 		@Query('access_token') github_access_token: string,
 	) {
 		try {
-			const { email, name, avatar_url } = await this.oauthService.getGithubUserInfo(
+			const { email, name, picture } = await this.oauthService.getGithubUserInfo(
 				token_type,
 				github_access_token,
 			);
-			const user = await this.oauthService.getOrCreateUser(email, name, avatar_url);
+			const user = await this.oauthService.getOrCreateUser(email, name, picture);
 			const { access_token, refresh_token } = await this.tokenService.create2Tokens(
 				user.email,
 				user.id,
@@ -115,6 +115,29 @@ export class AuthController {
 			const { email, name, picture } = await this.oauthService.getMicrosoftUserInfo(
 				token_type,
 				microsoft_access_token,
+			);
+			const user = await this.oauthService.getOrCreateUser(email, name, picture);
+			const { access_token, refresh_token } = await this.tokenService.create2Tokens(
+				user.email,
+				user.id,
+			);
+			return { access_token, refresh_token };
+		} catch (error) {
+			console.error(error);
+			throw new BadRequestException();
+		}
+	}
+
+	@Post('discord')
+	@HttpCode(200)
+	async authDiscord(
+		@Query('token_type') token_type: string,
+		@Query('access_token') discord_access_token: string,
+	) {
+		try {
+			const { email, name, picture } = await this.oauthService.getDiscordUserInfo(
+				token_type,
+				discord_access_token,
 			);
 			const user = await this.oauthService.getOrCreateUser(email, name, picture);
 			const { access_token, refresh_token } = await this.tokenService.create2Tokens(
