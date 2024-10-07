@@ -9,7 +9,7 @@ export const IconButton = React.forwardRef<
 		<button
 			ref={ref}
 			className={cn(
-				"hover:bg-app-foreground flex h-fit w-fit flex-shrink-0 flex-row items-center rounded-md p-2",
+				"hover:bg-app-foreground flex h-fit w-fit flex-shrink-0 flex-row items-center rounded-full p-2",
 				className,
 			)}
 			{...buttonProps}>

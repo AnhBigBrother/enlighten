@@ -64,7 +64,7 @@ export class OauthService {
 		};
 	}
 
-	// !!!careful : only use inside oauth-controller
+	// !!!careful : only use inside oauth-route
 	async getOrCreateUser(email: string, name: string, image: string) {
 		let user = await this.prisma.user.findUnique({
 			where: {
