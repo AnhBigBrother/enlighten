@@ -1,6 +1,5 @@
 "use client";
 
-import { _get } from "@/lib/fetch";
 import useUserStore from "@/stores/user-store";
 import { useLayoutEffect } from "react";
 import { redirect } from "next/navigation";

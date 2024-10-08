@@ -59,9 +59,9 @@ export const Setting = () => {
 			});
 	};
 	return (
-		<menu className='flex flex-row items-center gap-2'>
+		<menu className='flex flex-row items-center space-x-1 md:space-x-3'>
 			<div className='flex flex-row items-center'>
-				<IconButton>
+				<IconButton className='sm:px-3'>
 					<NotebookPen />
 					<p className='ml-2 hidden sm:inline-block'>Write</p>
 				</IconButton>
@@ -84,12 +84,14 @@ export const Setting = () => {
 
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<Avatar>
-						<AvatarImage src={user?.image} />
-						<AvatarFallback>
-							<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
-						</AvatarFallback>
-					</Avatar>
+					<button className='rounded-full border-none'>
+						<Avatar>
+							<AvatarImage src={user?.image} />
+							<AvatarFallback>
+								<User className='bg-app-foreground h-full w-full p-2' />
+							</AvatarFallback>
+						</Avatar>
+					</button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent
 					align='end'
@@ -98,13 +100,16 @@ export const Setting = () => {
 						{user ? (
 							<DropdownMenuItem>
 								<button className='flex h-full w-full flex-col items-start justify-start gap-3 py-2 hover:brightness-90'>
-									<Avatar>
-										<AvatarImage src={user?.image} />
-										<AvatarFallback>
-											<User className='bg-app-foreground h-full w-full rounded-full p-2' />
-										</AvatarFallback>
-									</Avatar>
-									<p>{user?.name}</p>
+									<div className='flex items-center space-x-3'>
+										<Avatar>
+											<AvatarImage src={user?.image} />
+											<AvatarFallback>
+												<User className='bg-app-foreground h-full w-full rounded-full p-2' />
+											</AvatarFallback>
+										</Avatar>
+										<span className='max-w-32 truncate'>{user?.name}</span>
+									</div>
+									<p className='max-w-48 truncate'>{user?.email}</p>
 								</button>
 							</DropdownMenuItem>
 						) : (
@@ -116,9 +121,9 @@ export const Setting = () => {
 						<DropdownMenuItem asChild>
 							<Dialog>
 								<DialogTrigger asChild>
-									<button className='flex items-center px-2 py-[0.375rem] text-sm'>
+									<button className='flex w-full items-center justify-between px-2 py-[0.375rem] text-sm'>
 										<p>Dark mode</p>
-										<p className='ml-10 w-10 font-bold text-blue-600'>
+										<p className='ml-8 w-10 font-bold text-blue-600'>
 											{theme === "light" ? "OFF" : theme === "dark" ? "ON" : "AUTO"}
 										</p>
 									</button>

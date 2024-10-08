@@ -18,7 +18,7 @@ export const Search = () => {
 				</IconButton>
 				<div className='border-app h-[60%] w-1 border-l'></div>
 				<input
-					className='h-full flex-grow rounded-r-xl bg-transparent px-3 outline-none'
+					className='h-full flex-grow rounded-r-full bg-transparent px-3 outline-none'
 					placeholder='Search...'
 					size={1}
 					value={search}

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
 import React from "react";
 
 type Props = {
@@ -14,6 +15,22 @@ export const MenuList = React.forwardRef<HTMLMenuElement, Props>(
 				ref={ref}>
 				{children}
 			</menu>
+		);
+	},
+);
+
+export const MenuGroupHeader = React.forwardRef<HTMLLabelElement, Props>(
+	({ children, className }, ref) => {
+		return (
+			<label
+				className={cn(
+					"flex w-full flex-row items-center px-2 py-1 text-base font-semibold",
+					className,
+				)}
+				ref={ref}>
+				{children}
+				<ChevronRight className='ml-3 h-5 w-5' />
+			</label>
 		);
 	},
 );
@@ -35,9 +52,9 @@ export const MenuItem = React.forwardRef<HTMLLIElement, Props & { active?: boole
 		return (
 			<li
 				className={cn(
-					"hover:bg-app w-full cursor-pointer rounded-md p-2",
+					"hover:bg-app-foreground w-full cursor-pointer rounded-md p-2",
 					className,
-					active && "bg-app",
+					active && "bg-app-foreground",
 				)}
 				ref={ref}>
 				{children}
@@ -47,5 +64,5 @@ export const MenuItem = React.forwardRef<HTMLLIElement, Props & { active?: boole
 );
 
 export const MenuSeperator = () => {
-	return <div className='border-app my-5 w-full border'></div>;
+	return <div className='border-app my-3 w-full border'></div>;
 };

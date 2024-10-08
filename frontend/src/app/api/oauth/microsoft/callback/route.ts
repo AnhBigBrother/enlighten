@@ -28,8 +28,6 @@ export async function GET(req: NextRequest) {
 			body: url.searchParams.toString(),
 		}).then((res) => res.json());
 
-		console.log(token);
-
 		/*<---login to backend via microsoft access_token--->*/
 		const { access_token, refresh_token } = await _post("auth/microsoft", {
 			searchParams: { token_type: token.token_type, access_token: token.access_token },
