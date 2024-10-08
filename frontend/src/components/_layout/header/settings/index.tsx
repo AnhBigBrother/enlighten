@@ -84,11 +84,11 @@ export const Setting = () => {
 
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<button>
+					<button className='rounded-full border-none'>
 						<Avatar>
 							<AvatarImage src={user?.image} />
 							<AvatarFallback>
-								<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
+								<User className='bg-app-foreground h-full w-full p-2' />
 							</AvatarFallback>
 						</Avatar>
 					</button>

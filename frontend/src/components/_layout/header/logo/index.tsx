@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
 	Bookmark,
-	ChevronDown,
 	Clock,
+	Grid3X3,
 	House,
 	Menu,
 	MessageCircleMore,
+	NotebookPen,
 	NotebookText,
 	SquareUser,
 	Telescope,
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import { IconButton } from "@/components/ui/icon-button";
+import { GiTicTacToe } from "react-icons/gi";
 import {
 	MenuGroup,
 	MenuGroupHeader,
@@ -25,16 +27,10 @@ import {
 	MenuList,
 	MenuSeperator,
 } from "@/components/ui/menu";
-import {
-	Collapsible,
-	CollapsibleContent,
-	CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
+import { CollapsibleContent, CollapsibleMenu } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const Logo = () => {
-	const [subscriptionCollapse, setSubscriptionCollapse] = useState<boolean>(true);
 	const sideMenu = useRef<HTMLDivElement | null>(null);
 	const toggleSideMenu = (e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (sideMenu.current) {
@@ -76,6 +72,12 @@ export const Logo = () => {
 									<p>Explore</p>
 								</div>
 							</MenuItem>
+							<MenuItem>
+								<div className='flex w-full flex-row space-x-4'>
+									<NotebookPen />
+									<p>Write post</p>
+								</div>
+							</MenuItem>
 						</MenuGroup>
 						<MenuSeperator />
 						<MenuGroup>
@@ -95,13 +97,7 @@ export const Logo = () => {
 							<MenuItem>
 								<div className='flex w-full flex-row space-x-4'>
 									<Bookmark />
-									<p>Favorited</p>
-								</div>
-							</MenuItem>
-							<MenuItem>
-								<div className='flex w-full flex-row space-x-4'>
-									<Clock />
-									<p>Watch later</p>
+									<p>Saved</p>
 								</div>
 							</MenuItem>
 						</MenuGroup>
@@ -126,22 +122,27 @@ export const Logo = () => {
 						</MenuGroup>
 						<MenuSeperator />
 						<MenuGroup>
-							<Collapsible open={subscriptionCollapse}>
-								<div className='flex flex-row items-center px-2 py-1'>
-									<h4 className='font-semibold'>Subscriptions</h4>
-									<CollapsibleTrigger
-										asChild
-										onClick={() => setSubscriptionCollapse((pre) => !pre)}>
-										<IconButton className='ml-2 rounded-md p-1'>
-											<ChevronDown
-												className={cn("h-5 w-5", {
-													"rotate-180": subscriptionCollapse,
-												})}
-											/>
-										</IconButton>
-									</CollapsibleTrigger>
-								</div>
+							<CollapsibleMenu label='Games'>
 								<CollapsibleContent>
+									<MenuItem>
+										<div className='flex w-full flex-row space-x-4'>
+											<Grid3X3 />
+											<p>Sudoku</p>
+										</div>
+									</MenuItem>
+									<MenuItem>
+										<div className='flex w-full flex-row space-x-4'>
+											<GiTicTacToe className='h-6 w-6' />
+											<p>Tic-Tac-Toe</p>
+										</div>
+									</MenuItem>
+								</CollapsibleContent>
+							</CollapsibleMenu>
+						</MenuGroup>
+						<MenuSeperator />
+						<MenuGroup>
+							<CollapsibleMenu label='Subscriptions'>
+								<CollapsibleContent className='mt-1'>
 									<div className='flex w-full flex-row items-center space-x-2 p-1'>
 										<Avatar className='h-9 w-9'>
 											<AvatarImage src='' />
@@ -149,7 +150,7 @@ export const Logo = () => {
 												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
 											</AvatarFallback>
 										</Avatar>
-										<span>Writter</span>
+										<p>Writter</p>
 									</div>
 									<div className='flex w-full flex-row items-center space-x-2 p-1'>
 										<Avatar className='h-9 w-9'>
@@ -158,7 +159,7 @@ export const Logo = () => {
 												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
 											</AvatarFallback>
 										</Avatar>
-										<span>Writter</span>
+										<p>Writter</p>
 									</div>
 									<div className='flex w-full flex-row items-center space-x-2 p-1'>
 										<Avatar className='h-9 w-9'>
@@ -167,19 +168,10 @@ export const Logo = () => {
 												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
 											</AvatarFallback>
 										</Avatar>
-										<span>Writter</span>
-									</div>
-									<div className='flex w-full flex-row items-center space-x-2 p-1'>
-										<Avatar className='h-9 w-9'>
-											<AvatarImage src='' />
-											<AvatarFallback>
-												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
-											</AvatarFallback>
-										</Avatar>
-										<span>Writter</span>
+										<p>Writter</p>
 									</div>
 								</CollapsibleContent>
-							</Collapsible>
+							</CollapsibleMenu>
 						</MenuGroup>
 						<MenuSeperator />
 						<footer className='flex flex-row flex-wrap items-center justify-center gap-x-3 gap-y-1 p-2 text-sm font-bold'>
@@ -193,7 +185,7 @@ export const Logo = () => {
 								viverra et neque finibus, finibus tincidunt libero. Quisque ullamcorper dapibus
 								ex sit amet aliquam.
 							</p>
-							<p className='my-3 w-full text-center text-[0.625rem] font-light'>
+							<p className='mt-3 w-full text-center text-[0.625rem] font-light'>
 								Enlighten @2024. All rights reserved.
 							</p>
 						</footer>
