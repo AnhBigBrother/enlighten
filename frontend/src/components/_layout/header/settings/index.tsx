@@ -71,7 +71,7 @@ export const Setting = () => {
 							<Bell />
 						</IconButton>
 					</DropdownMenuTrigger>
-					<DropdownMenuContent className='border-app bg-app'>
+					<DropdownMenuContent>
 						<DropdownMenuLabel>Notifications</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
@@ -88,14 +88,12 @@ export const Setting = () => {
 						<Avatar>
 							<AvatarImage src={user?.image} />
 							<AvatarFallback>
-								<User className='bg-app-foreground h-full w-full p-2' />
+								<User className='h-full w-full bg-accent p-2' />
 							</AvatarFallback>
 						</Avatar>
 					</button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent
-					align='end'
-					className='border-app bg-app'>
+				<DropdownMenuContent align='end'>
 					<DropdownMenuGroup>
 						{user ? (
 							<DropdownMenuItem>
@@ -104,7 +102,7 @@ export const Setting = () => {
 										<Avatar>
 											<AvatarImage src={user?.image} />
 											<AvatarFallback>
-												<User className='bg-app-foreground h-full w-full rounded-full p-2' />
+												<User className='h-full w-full rounded-full bg-accent p-2' />
 											</AvatarFallback>
 										</Avatar>
 										<span className='max-w-32 truncate'>{user?.name}</span>
@@ -121,11 +119,11 @@ export const Setting = () => {
 						<DropdownMenuItem asChild>
 							<Dialog>
 								<DialogTrigger asChild>
-									<button className='flex w-full items-center justify-between px-2 py-[0.375rem] text-sm'>
-										<p>Dark mode</p>
-										<p className='ml-8 w-10 font-bold text-blue-600'>
+									<button className='flex w-full items-center justify-between px-2 py-[0.375rem] text-sm hover:bg-accent'>
+										<span>Dark mode</span>
+										<span className='ml-8 w-10 font-bold text-blue-500'>
 											{theme === "light" ? "OFF" : theme === "dark" ? "ON" : "AUTO"}
-										</p>
+										</span>
 									</button>
 								</DialogTrigger>
 								<DialogContent className='max-w-max'>
@@ -139,7 +137,7 @@ export const Setting = () => {
 										<div
 											onClick={() => setTheme("light")}
 											className={cn("flex cursor-pointer flex-col space-y-2 rounded-md p-2", {
-												"bg-app-foreground": theme === "light",
+												"bg-accent": theme === "light",
 											})}>
 											<div className='flex items-center space-x-2'>
 												<Checkbox
@@ -153,12 +151,12 @@ export const Setting = () => {
 												alt='Light mode'
 												height={160}
 												width={160}
-												className='rounded-sm'></Image>
+												className='rounded-sm border'></Image>
 										</div>
 										<div
 											onClick={() => setTheme("dark")}
 											className={cn("flex cursor-pointer flex-col space-y-2 rounded-md p-2", {
-												"bg-app-foreground": theme === "dark",
+												"bg-accent": theme === "dark",
 											})}>
 											<div className='flex items-center space-x-2'>
 												<Checkbox
@@ -172,12 +170,12 @@ export const Setting = () => {
 												alt='Dark mode'
 												height={160}
 												width={160}
-												className='rounded-sm'></Image>
+												className='rounded-sm border'></Image>
 										</div>
 										<div
 											onClick={() => setTheme("system")}
 											className={cn("flex cursor-pointer flex-col space-y-2 rounded-md p-2", {
-												"bg-app-foreground": theme === "system",
+												"bg-accent": theme === "system",
 											})}>
 											<div className='flex items-center space-x-2'>
 												<Checkbox
@@ -186,7 +184,7 @@ export const Setting = () => {
 												/>
 												<label htmlFor='system-mode'>System</label>
 											</div>
-											<div className='relative h-fit w-fit flex-shrink-0'>
+											<div className='relative h-fit w-fit flex-shrink-0 rounded-sm border'>
 												<Image
 													src='/themes/light.svg'
 													alt='Light'

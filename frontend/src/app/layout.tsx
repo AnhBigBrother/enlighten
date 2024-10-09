@@ -37,7 +37,7 @@ export default function Layout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={cn(merriweather.className, "text-app bg-app")}>
+			<body className={merriweather.className}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='system'

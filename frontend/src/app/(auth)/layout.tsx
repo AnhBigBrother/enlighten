@@ -4,8 +4,6 @@ import useUserStore from "@/stores/user-store";
 import { useLayoutEffect } from "react";
 import { redirect } from "next/navigation";
 
-export const dynamic = "force-dynamic";
-
 export default function AuthLayout({
 	children,
 }: Readonly<{
@@ -18,8 +16,6 @@ export default function AuthLayout({
 		}
 	}, [user]);
 	return (
-		<div className='bg-app-foreground grid h-screen w-screen place-content-center '>
-			{children}
-		</div>
+		<div className='grid h-screen w-screen place-content-center bg-secondary'>{children}</div>
 	);
 }
