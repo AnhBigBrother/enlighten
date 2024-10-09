@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 const CommentSection = () => {
 	const [commment, setCommment] = useState<string>("");
 	return (
-		<div className='border-app w-full rounded-2xl border'>
+		<div className='w-full rounded-2xl border'>
 			<textarea
 				className='w-full bg-transparent px-3 py-2 outline-none'
 				value={commment}
@@ -22,7 +22,7 @@ const CommentSection = () => {
 			<div className='flex w-full flex-row items-center justify-end space-x-3 p-2'>
 				<Button
 					variant='secondary'
-					className='bg-app-foreground rounded-full'
+					className='rounded-full bg-accent'
 					onClick={() => setCommment("")}>
 					Cancel
 				</Button>
@@ -52,35 +52,35 @@ const Discussion = ({ linkPost, disableComment = false }: DiscussionProps) => {
 	return (
 		<div className='flex flex-col space-y-2'>
 			<div className='flex w-full flex-row items-center justify-start space-x-2 text-sm'>
-				<div className='border-app flex flex-row items-center rounded-full border'>
+				<div className='flex flex-row items-center rounded-full border'>
 					<button
 						onClick={() => handleClicVote("up")}
-						className='hover:bg-app-foreground flex flex-row items-center space-x-1 rounded-full p-2'>
+						className='flex flex-row items-center space-x-1 rounded-full p-2 hover:bg-accent'>
 						<PiArrowFatUp className='h-5 w-5' />
 						<span>10</span>
 					</button>
 					<button
 						onClick={() => handleClicVote("down")}
-						className='hover:bg-app-foreground flex flex-row items-center space-x-1 rounded-full p-2'>
+						className='flex flex-row items-center space-x-1 rounded-full p-2 hover:bg-accent'>
 						<PiArrowFatDown className='h-5 w-5' />
 						<span>10</span>
 					</button>
 				</div>
 				<button
 					onClick={() => handleopenComment()}
-					className='border-app hover:bg-app-foreground flex flex-row items-center space-x-1 rounded-full border p-2'>
+					className='flex flex-row items-center space-x-1 rounded-full border p-2 hover:bg-accent'>
 					<PiChat className='h-5 w-5' />
 					<span>10</span>
 				</button>
 				<button
 					onClick={() => handleClickSave()}
-					className='border-app hover:bg-app-foreground flex flex-row items-center space-x-1 rounded-full border p-2'>
+					className='flex flex-row items-center space-x-1 rounded-full border p-2 hover:bg-accent'>
 					<PiBookmarkSimple className='h-5 w-5' />
 					<span className='hidden sm:inline-block'>Save</span>
 				</button>
 				<button
 					onClick={() => handleClickShare()}
-					className='border-app hover:bg-app-foreground flex flex-row items-center space-x-1 rounded-full border p-2'>
+					className='flex flex-row items-center space-x-1 rounded-full border p-2 hover:bg-accent'>
 					<PiShareFat className='h-5 w-5' />
 					<span className='hidden sm:inline-block'>Share</span>
 				</button>

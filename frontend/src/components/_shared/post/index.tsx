@@ -5,7 +5,7 @@ import React from "react";
 
 const Post = () => {
 	return (
-		<div className='border-app rounded-2xl border p-3'>
+		<div className='rounded-2xl border p-3'>
 			<div className='flex w-full flex-col'>
 				<PostHeader />
 				<PostContent />

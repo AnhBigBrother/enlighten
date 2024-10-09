@@ -52,9 +52,9 @@ export const MenuItem = React.forwardRef<HTMLLIElement, Props & { active?: boole
 		return (
 			<li
 				className={cn(
-					"hover:bg-app-foreground w-full cursor-pointer rounded-md p-2",
+					"w-full cursor-pointer rounded-md p-2 hover:bg-accent",
 					className,
-					active && "bg-app-foreground",
+					active && "bg-accent",
 				)}
 				ref={ref}>
 				{children}
@@ -64,5 +64,5 @@ export const MenuItem = React.forwardRef<HTMLLIElement, Props & { active?: boole
 );
 
 export const MenuSeperator = () => {
-	return <div className='border-app my-3 w-full border'></div>;
+	return <div className='my-3 w-full border'></div>;
 };

@@ -8,7 +8,7 @@ export const PostHeader = () => {
 			<Avatar>
 				<AvatarImage src=''></AvatarImage>
 				<AvatarFallback>
-					<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
+					<User className='h-full w-full cursor-pointer bg-accent p-2' />
 				</AvatarFallback>
 			</Avatar>
 			<div className='flex flex-col items-center justify-center text-sm'>

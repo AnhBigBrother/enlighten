@@ -49,9 +49,9 @@ export const Logo = () => {
 		<>
 			<div
 				ref={sideMenu}
-				className='border-app fixed left-0 top-16 hidden h-[calc(100vh-4rem)] w-full border-r bg-black/50 xl:block xl:w-fit xl:bg-transparent xl:py-3'
+				className='fixed left-0 top-16 hidden h-[calc(100vh-4rem)] w-full border-r bg-black/50 xl:block xl:w-fit xl:bg-transparent xl:py-3'
 				onClick={(e) => toggleSideMenu(e)}>
-				<aside className='fluent-scrollbar border-app bg-app flex h-full w-64 flex-col items-start justify-start overflow-y-auto overflow-x-hidden px-2 py-3 hover:overflow-y-auto xl:w-72 xl:overflow-y-hidden xl:px-5 xl:py-1'>
+				<aside className='fluent-scrollbar flex h-full w-64 flex-col items-start justify-start overflow-y-auto overflow-x-hidden bg-background px-2 py-3 hover:overflow-y-auto xl:w-72 xl:overflow-y-hidden xl:px-5 xl:py-1'>
 					<MenuList>
 						<MenuGroup>
 							<MenuItem>
@@ -147,7 +147,7 @@ export const Logo = () => {
 										<Avatar className='h-9 w-9'>
 											<AvatarImage src='' />
 											<AvatarFallback>
-												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
+												<User className='h-full w-full cursor-pointer bg-accent p-2' />
 											</AvatarFallback>
 										</Avatar>
 										<p>Writter</p>
@@ -156,7 +156,7 @@ export const Logo = () => {
 										<Avatar className='h-9 w-9'>
 											<AvatarImage src='' />
 											<AvatarFallback>
-												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
+												<User className='h-full w-full cursor-pointer bg-accent p-2' />
 											</AvatarFallback>
 										</Avatar>
 										<p>Writter</p>
@@ -165,7 +165,7 @@ export const Logo = () => {
 										<Avatar className='h-9 w-9'>
 											<AvatarImage src='' />
 											<AvatarFallback>
-												<User className='bg-app-foreground h-full w-full cursor-pointer p-2' />
+												<User className='h-full w-full cursor-pointer bg-accent p-2' />
 											</AvatarFallback>
 										</Avatar>
 										<p>Writter</p>
